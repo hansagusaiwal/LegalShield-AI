@@ -1,0 +1,422 @@
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-15deg);
+  }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  transform: translateX(-120%) skewX(-15deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  animation: shimmer 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.scan-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.14) 40%,
+    rgba(59, 130, 246, 0.06) 55%,
+    transparent 70%
+  );
+  filter: blur(0.2px);
+  animation: scan 1.3s ease-in-out infinite;
+}
+
+/* Premium Obsidian Bento */
+:root {
+  --obsidian-bg: #0a0a0a;
+  --obsidian-card: #1a1a1a;
+  --obsidian-border: #262626;
+  --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+/* Typography */
+.headline {
+  font-weight: 700;
+}
+.body-text {
+  font-weight: 400;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Highlight Glow */
+.highlight-glow {
+  background: rgba(250, 204, 21, 0.2);
+  border-left: 4px solid #facc15;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 10px 0;
+  display: block;
+}
+
+.bento-card {
+  position: relative !important;
+  margin-bottom: 20px;
+  min-height: fit-content;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.bento-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 25px 80px -50px rgba(0, 0, 0, 1),
+    0 0 20px rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropzone {
+  position: relative;
+  border-radius: 26px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px;
+  min-height: 146px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+.dropzone:focus,
+.dropzone:focus-visible {
+  outline: none;
+}
+.dropzone:focus-visible {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.4) inset,
+    0 0 0 4px rgba(59, 130, 246, 0.14),
+    0 0 55px rgba(59, 130, 246, 0.25);
+}
+.dropzone:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+.dropzone--drag {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.35) inset,
+    0 0 70px rgba(59, 130, 246, 0.25);
+}
+.dropzone--hasfile {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.scan-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 20px 70px -45px rgba(59, 130, 246, 0.7);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+.scan-btn:hover {
+  transform: scale(1.02);
+  border-color: rgba(255, 255, 255, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+}
+
+.glow-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.glow-button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(59, 130, 246, 0.2);
+  transform: translateY(-1px);
+}
+
+.risk-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+.risk-dot.safe { background-color: #10b981; color: #10b981; }
+.risk-dot.low { background-color: #34d399; color: #34d399; }
+.risk-dot.medium { background-color: #fbbf24; color: #fbbf24; }
+.risk-dot.high { background-color: #ef4444; color: #ef4444; }
+
+/* ELI5 premium toggle (amber glow when active) */
+.eli5-shell {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+.eli5-shell--active {
+  border-color: rgba(245, 158, 11, 0.30);
+  box-shadow:
+    0 0 0 1px rgba(245, 158, 11, 0.18) inset,
+    0 0 45px rgba(245, 158, 11, 0.12);
+}
+.eli5-toggle {
+  position: relative;
+  width: 54px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+.eli5-toggle--active {
+  border-color: rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(245, 158, 11, 0.20) inset,
+    0 0 34px rgba(245, 158, 11, 0.14);
+}
+.eli5-knob {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 10px 22px -12px rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+}
+
+/* Gauge needle (animated via framer-motion rotate) */
+.gauge-needle {
+  position: absolute;
+  width: 4px;
+  height: 92px;
+  left: 50%;
+  top: 56px;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 0 16px rgba(255, 255, 255, 0.18),
+    0 0 45px rgba(59, 130, 246, 0.10);
+}
+
+/* Risk pill */
+.risk-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 10px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.72);
+}
+.risk-pill--safe { border-color: rgba(56, 189, 248, 0.24); background: rgba(56, 189, 248, 0.08); }
+.risk-pill--low { border-color: rgba(52, 211, 153, 0.22); background: rgba(52, 211, 153, 0.08); }
+.risk-pill--medium { border-color: rgba(251, 191, 36, 0.22); background: rgba(251, 191, 36, 0.08); }
+.risk-pill--high { border-color: rgba(251, 113, 133, 0.22); background: rgba(251, 113, 133, 0.08); }
+
+/* Analysis split panes */
+.pane {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.pane-title {
+  padding: 12px 12px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.70);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+}
+.pane-body {
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  max-height: 210px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+/* Recommendations */
+.rec-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+.rec-item:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+.rec-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  background: rgba(245, 158, 11, 0.10);
+  color: rgba(253, 230, 138, 0.95);
+  font-size: 12px;
+  font-weight: 800;
+  flex: none;
+}
+.rec-text {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Neon red pulse on high risk */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(251, 113, 133, 0.18) inset,
+      0 0 0 0 rgba(251, 113, 133, 0.0),
+      0 25px 80px -60px rgba(0, 0, 0, 0.9);
+    border-color: rgba(251, 113, 133, 0.22);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(251, 113, 133, 0.24) inset,
+      0 0 40px rgba(251, 113, 133, 0.14),
+      0 25px 80px -60px rgba(0, 0, 0, 0.9);
+    border-color: rgba(251, 113, 133, 0.34);
+  }
+}
+.risk-pulse {
+  animation: neonPulse 2.2s ease-in-out infinite;
+}
+
+/* Scrollbar (kept from previous, moved to CSS) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Clause Overlay System */
+.clause-overlay-box {
+  background: rgba(250, 204, 21, 0.15);
+  border: 2px solid #facc15;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.clause-overlay-box:hover {
+  background: rgba(250, 204, 21, 0.25);
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s, bottom 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  z-index: 60;
+}
+
+.clause-overlay-box:hover .tooltip-text {
+  opacity: 1;
+  bottom: -40px;
+}

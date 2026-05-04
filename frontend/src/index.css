@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f4f6ff;
+  --color-brand-100: #e5ebff;
+  --color-brand-200: #cdd9ff;
+  --color-brand-300: #a4beff;
+  --color-brand-400: #7697ff;
+  --color-brand-500: #4969ff;
+  --color-brand-600: #2940ff;
+  --color-brand-700: #1a2de6;
+  --color-brand-800: #1726b8;
+  --color-brand-900: #182591;
+  --color-brand-950: #0f1454;
+
+  --color-surface-900: #0a0a0f;
+  --color-surface-800: #12121a;
+  --color-surface-700: #1a1a24;
+  --color-surface-600: #232330;
+  
+  --font-sans: "Inter", system-ui, sans-serif;
+  
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-surface-800/60 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  .glass-card {
+    @apply bg-surface-700/50 backdrop-blur-md border border-white/5 rounded-2xl p-6 transition-all duration-300 hover:border-white/10 hover:bg-surface-700/80;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  background-color: var(--color-surface-900);
+  color: white;
+  margin: 0;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(73, 105, 255, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(230, 41, 104, 0.08), transparent 25%);
+}
+
+.risk-gradient-high {
+  background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.risk-gradient-medium {
+  background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.risk-gradient-low {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.risk-gradient-safe {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
